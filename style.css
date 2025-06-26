@@ -1046,3 +1046,138 @@ body.dark-mode .demo-chart-icon {
 body.dark-mode .demo-chart-title {
     color: #ffce00;
 }
+
+@media (max-width: 500px) {
+    .dashboard {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        flex-direction: row;
+        width: 100%;
+        min-width: unset;
+        max-width: unset;
+        border-radius: 0 0 20px 20px;
+        padding: 6px 0;
+        position: static;
+        min-height: unset;
+        height: 60px;
+        box-shadow: 0 2px 8px #e0e0e0;
+    }
+
+    .sidebar nav ul {
+        flex-direction: row;
+        gap: 8px;
+    }
+
+    .sidebar nav ul li {
+        font-size: 1.1rem;
+        padding: 0.5rem 0.5rem;
+    }
+
+    .sidebar-profile {
+        position: static;
+        flex-direction: row;
+        gap: 4px;
+        margin-top: 0;
+        margin-left: auto;
+        font-size: 0.9rem;
+    }
+
+    .main-content {
+        padding: 4px;
+        gap: 16px;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .bills, .invoices {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .bills .card, .invoices .card {
+        min-width: unset;
+        width: 100%;
+        padding: 12px;
+        font-size: 0.95rem;
+    }
+
+    .invoices .chart {
+        min-width: unset;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .history-header {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .history table, .history thead, .history tbody, .history th, .history td, .history tr {
+        display: block;
+        width: 100%;
+    }
+
+    .history th, .history td {
+        box-sizing: border-box;
+        padding: 6px 4px;
+        font-size: 0.95rem;
+    }
+
+    .history tr {
+        margin-bottom: 10px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .history thead {
+        display: none;
+    }
+
+    .history td:before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: inline-block;
+        width: 90px;
+        color: #6c63ff;
+    }
+}
+
+@media (max-width: 400px) {
+    .sidebar {
+        height: 48px;
+        padding: 2px 0;
+    }
+
+    .sidebar nav ul li {
+        font-size: 0.95rem;
+        padding: 0.3rem 0.3rem;
+    }
+
+    .main-content {
+        padding: 2px;
+        gap: 8px;
+    }
+
+    .bills .card, .invoices .card {
+        padding: 6px;
+        font-size: 0.9rem;
+    }
+
+    .invoice-label, .bill-label {
+        font-size: 0.95rem;
+    }
+
+    .invoice-value, .bill-value {
+        font-size: 1.05rem;
+    }
+
+    .history th, .history td {
+        font-size: 0.9rem;
+        padding: 4px 2px;
+    }
+}
