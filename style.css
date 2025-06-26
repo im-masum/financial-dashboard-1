@@ -427,12 +427,41 @@ header p {
 }
 
 @media (max-width: 1100px) {
-    .bills, .invoices {
-        flex-direction: column;
-    }
-
     .main-content {
         padding: 20px;
+    }
+
+    .bills, .invoices {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .bills .card, .invoices .card, .demo-chart-card {
+        min-width: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 900px) {
+    .main-content {
+        padding: 10px;
+    }
+
+    .bills, .invoices, .demo-chart-section {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .bills .card, .invoices .card, .demo-chart-card {
+        min-width: 0;
+        width: 100%;
+        max-width: 100%;
+        padding: 18px 10px;
+    }
+
+    .history {
+        padding: 10px;
     }
 }
 
@@ -443,14 +472,95 @@ header p {
 
     .sidebar {
         flex-direction: row;
-        width: 100%;
+        width: 100vw;
+        min-width: 0;
+        min-height: 0;
+        height: 60px;
         border-radius: 0 0 30px 30px;
-        padding: 10px 0;
+        padding: 0 10px;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 20px #e0e0e0;
+    }
+
+    .sidebar nav ul {
+        flex-direction: row;
+        gap: 10px;
+        width: auto;
+        margin: 0;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .sidebar nav ul li {
+        padding: 8px 0;
+        font-size: 1.3rem;
+    }
+
+    .sidebar-profile {
+        position: static;
+        flex-direction: row;
+        gap: 6px;
+        margin-right: 8px;
+        margin-bottom: 0;
+        align-items: center;
     }
 
     .main-content {
-        padding: 10px;
+        padding: 8px;
     }
+
+    .bills, .invoices, .demo-chart-section {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .bills .card, .invoices .card, .demo-chart-card {
+        min-width: 0;
+        width: 100%;
+        max-width: 100%;
+        padding: 12px 6px;
+        font-size: 0.98rem;
+    }
+
+    .history table, .history th, .history td {
+        font-size: 0.95rem;
+        padding: 6px 4px;
+    }
+
+    .demo-chart-card {
+        padding: 12px 6px;
+    }
+}
+
+@media (max-width: 500px) {
+    .sidebar {
+        height: 48px;
+        padding: 0 2px;
+    }
+
+    .sidebar nav ul li {
+        font-size: 1.1rem;
+        padding: 6px 0;
+    }
+
+    .sidebar-profile {
+        gap: 2px;
+    }
+
+    .main-content {
+        padding: 2px;
+    }
+
+    .bills .card, .invoices .card, .demo-chart-card {
+        font-size: 0.92rem;
+        padding: 8px 2px;
+    }
+}
+
+/* Make charts and tables scrollable on small screens */
+.demo-chart-card, .invoices .chart, .history {
+    overflow-x: auto;
 }
 
 .modal {
@@ -990,221 +1100,512 @@ body.dark-mode .settings-option.active {
     color: #23263a;
 }
 
-.demo-chart-section {
-    margin: 24px 0;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-}
-
-.demo-chart-card {
+/* Documents section styles */
+.documents-section {
+    margin: 2.5rem 0 2rem 0;
     background: #fff;
-    border-radius: 20px;
+    border-radius: 1.5rem;
     box-shadow: 0 2px 16px #e0e0e0;
-    padding: 24px 32px;
-    min-width: 320px;
+    padding: 2rem 2.5rem;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
+    gap: 1.5rem;
 }
 
-.demo-chart-header {
+.documents-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-bottom: 1.2rem;
+}
+
+.documents-header h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #6c63ff;
+}
+
+.documents-desc {
+    margin: 0;
+    color: #888;
+    font-size: 1rem;
+}
+
+.documents-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    justify-content: flex-start;
+}
+
+.document-card {
+    background: #f5f6fa;
+    border-radius: 1.1rem;
+    box-shadow: 0 1px 8px #e0e0e0;
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
+    gap: 1.1rem;
+    padding: 1.1rem 1.5rem;
+    min-width: 220px;
+    max-width: 340px;
+    flex: 1 1 260px;
+    transition: box-shadow 0.18s, transform 0.18s;
+    position: relative;
 }
 
-.demo-chart-icon {
-    font-size: 1.7rem;
-    background: #f5f6fa;
-    border-radius: 50%;
-    padding: 8px;
+.document-card:hover {
+    box-shadow: 0 4px 18px #bdbdbd;
+    transform: translateY(-2px) scale(1.03);
+    z-index: 2;
+}
+
+.document-icon {
+    font-size: 2.1rem;
+    margin-right: 0.5rem;
     color: #6c63ff;
-    box-shadow: 0 2px 8px #e0e0e0;
+    flex-shrink: 0;
 }
 
-.demo-chart-title {
-    font-size: 1.1rem;
+.document-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    min-width: 0;
+}
+
+.document-title {
     font-weight: 600;
-    color: #6c63ff;
+    font-size: 1.05rem;
+    color: #23263a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 160px;
 }
 
-body.dark-mode .demo-chart-card {
-    background: #23263a;
-    color: #ffce00;
-    box-shadow: 0 2px 16px #10111a;
+.document-type {
+    font-size: 0.92rem;
+    color: #888;
 }
 
-body.dark-mode .demo-chart-icon {
-    background: #23263a;
-    color: #ffce00;
-    box-shadow: 0 2px 8px #10111a;
+.document-action {
+    background: #6c63ff;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+    margin-left: auto;
+    box-shadow: 0 1px 4px #e0e0e0;
 }
 
-body.dark-mode .demo-chart-title {
-    color: #ffce00;
+.document-action:hover, .document-action:focus {
+    background: #48c6ef;
+    color: #fff;
+    box-shadow: 0 2px 8px #bdbdbd;
 }
 
-@media (max-width: 500px) {
-    .dashboard {
-        flex-direction: column;
+@media (max-width: 1100px) {
+    .documents-section {
+        padding: 1.2rem 0.7rem;
+        border-radius: 1rem;
     }
 
-    .sidebar {
-        flex-direction: row;
-        width: 100%;
-        min-width: unset;
-        max-width: unset;
-        border-radius: 0 0 20px 20px;
-        padding: 6px 0;
-        position: static;
-        min-height: unset;
-        height: 60px;
-        box-shadow: 0 2px 8px #e0e0e0;
+    .documents-list {
+        gap: 0.7rem;
     }
 
-    .sidebar nav ul {
-        flex-direction: row;
-        gap: 8px;
+    .document-card {
+        padding: 0.7rem 1rem;
+        min-width: 0;
+        max-width: 100%;
+        border-radius: 0.8rem;
     }
-
-    .sidebar nav ul li {
-        font-size: 1.1rem;
-        padding: 0.5rem 0.5rem;
-    }
-
-    .sidebar-profile {
-        position: static;
-        flex-direction: row;
-        gap: 4px;
-        margin-top: 0;
-        margin-left: auto;
-        font-size: 0.9rem;
-    }
-
-    .main-content {
-        padding: 4px;
-        gap: 16px;
-    }
-
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-
-    .bills, .invoices {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .bills .card, .invoices .card {
-        min-width: unset;
-        width: 100%;
-        padding: 12px;
-        font-size: 0.95rem;
-    }
-
-    .invoices .chart {
-        min-width: unset;
-        width: 100%;
-        padding: 10px;
-    }
-
-    .history-header {
-        flex-direction: column;
-        gap: 6px;
-    }
-
-    .history table, .history thead, .history tbody, .history th, .history td, .history tr {
-        display: block;
-        width: 100%;
-    }
-
-    .history th, .history td {
-        box-sizing: border-box;
-        padding: 6px 4px;
-        font-size: 0.95rem;
-    }
-
-    .history tr {
-        margin-bottom: 10px;
-        border-bottom: 1px solid #eee;
-    }
-
-    .history thead {
-        display: none;
-    }
-
-    .history td:before {
-        content: attr(data-label);
-        font-weight: bold;
-        display: inline-block;
-        width: 90px;
-        color: #6c63ff;
-    }
-}
-
-@media (max-width: 400px) {
-    .sidebar {
-        height: 48px;
-        padding: 2px 0;
-    }
-
-    .sidebar nav ul li {
-        font-size: 0.95rem;
-        padding: 0.3rem 0.3rem;
-    }
-
-    .main-content {
-        padding: 2px;
-        gap: 8px;
-    }
-
-    .bills .card, .invoices .card {
-        padding: 6px;
-        font-size: 0.9rem;
-    }
-
-    .invoice-label, .bill-label {
-        font-size: 0.95rem;
-    }
-
-    .invoice-value, .bill-value {
-        font-size: 1.05rem;
-    }
-
-    .history th, .history td {
-        font-size: 0.9rem;
-        padding: 4px 2px;
-    }
-}
-
-.sidebar-toggle {
-    display: none;
 }
 
 @media (max-width: 700px) {
-    .sidebar-toggle {
-        display: block !important;
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        z-index: 200;
-        font-size: 2rem;
-        background: #fff;
-        border: none;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px #e0e0e0;
-        padding: 4px 12px;
-        color: #6c63ff;
-        cursor: pointer;
-        transition: background 0.2s, color 0.2s;
+    .documents-section {
+        padding: 0.7rem 0.2rem;
+        border-radius: 0.7rem;
+        margin: 1.2rem 0 1rem 0;
     }
 
-    .sidebar-collapsed {
-        display: none !important;
+    .documents-list {
+        flex-direction: column;
+        gap: 0.5rem;
     }
+
+    .document-card {
+        width: 100%;
+        max-width: 100%;
+        padding: 0.6rem 0.5rem;
+        font-size: 0.98rem;
+        border-radius: 0.6rem;
+    }
+
+    .document-title {
+        max-width: 100px;
+        font-size: 0.98rem;
+    }
+}
+
+body.dark-mode .documents-section {
+    background: #23263a;
+    box-shadow: 0 2px 16px #10111a;
+}
+
+body.dark-mode .documents-header h3 {
+    color: #ffce00;
+}
+
+body.dark-mode .document-card {
+    background: #181a20;
+    box-shadow: 0 1px 8px #10111a;
+}
+
+body.dark-mode .document-title {
+    color: #ffce00;
+}
+
+body.dark-mode .document-type {
+    color: #bdbdbd;
+}
+
+body.dark-mode .document-icon {
+    color: #ffce00;
+}
+
+body.dark-mode .document-action {
+    background: #ffce00;
+    color: #23263a;
+    box-shadow: 0 1px 4px #10111a;
+}
+
+body.dark-mode .document-action:hover, body.dark-mode .document-action:focus {
+    background: #6c63ff;
+    color: #fff;
+    box-shadow: 0 2px 8px #23263a;
+}
+
+/* Analytics section styles */
+.analytics-section {
+    margin: 2.5rem 0 2rem 0;
+    background: #fff;
+    border-radius: 1.5rem;
+    box-shadow: 0 2px 16px #e0e0e0;
+    padding: 2rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.analytics-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-bottom: 1.2rem;
+}
+
+.analytics-header h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #6c63ff;
+}
+
+.analytics-desc {
+    margin: 0;
+    color: #888;
+    font-size: 1rem;
+}
+
+.analytics-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    justify-content: flex-start;
+}
+
+.analytics-card {
+    background: #f5f6fa;
+    border-radius: 1.1rem;
+    box-shadow: 0 1px 8px #e0e0e0;
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    padding: 1.1rem 1.5rem;
+    min-width: 220px;
+    max-width: 340px;
+    flex: 1 1 220px;
+    transition: box-shadow 0.18s, transform 0.18s;
+    position: relative;
+}
+
+.analytics-card:hover {
+    box-shadow: 0 4px 18px #bdbdbd;
+    transform: translateY(-2px) scale(1.03);
+    z-index: 2;
+}
+
+.analytics-icon {
+    font-size: 2.1rem;
+    margin-right: 0.5rem;
+    color: #6c63ff;
+    flex-shrink: 0;
+}
+
+.analytics-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    min-width: 0;
+}
+
+.analytics-title {
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: #23263a;
+}
+
+.analytics-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #48c6ef;
+}
+
+.analytics-trend {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-top: 2px;
+    display: inline-block;
+}
+
+.analytics-trend.up {
+    color: #2ecc71;
+}
+
+.analytics-trend.down {
+    color: #e74c3c;
+}
+
+@media (max-width: 1100px) {
+    .analytics-section {
+        padding: 1.2rem 0.7rem;
+        border-radius: 1rem;
+    }
+
+    .analytics-list {
+        gap: 0.7rem;
+    }
+
+    .analytics-card {
+        padding: 0.7rem 1rem;
+        min-width: 0;
+        max-width: 100%;
+        border-radius: 0.8rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .analytics-section {
+        padding: 0.7rem 0.2rem;
+        border-radius: 0.7rem;
+        margin: 1.2rem 0 1rem 0;
+    }
+
+    .analytics-list {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .analytics-card {
+        width: 100%;
+        max-width: 100%;
+        padding: 0.6rem 0.5rem;
+        font-size: 0.98rem;
+        border-radius: 0.6rem;
+    }
+}
+
+body.dark-mode .analytics-section {
+    background: #23263a;
+    box-shadow: 0 2px 16px #10111a;
+}
+
+body.dark-mode .analytics-header h3 {
+    color: #ffce00;
+}
+
+body.dark-mode .analytics-card {
+    background: #181a20;
+    box-shadow: 0 1px 8px #10111a;
+}
+
+body.dark-mode .analytics-title {
+    color: #ffce00;
+}
+
+body.dark-mode .analytics-value {
+    color: #ffce00;
+}
+
+body.dark-mode .analytics-icon {
+    color: #ffce00;
+}
+
+/* Settings section styles */
+.settings-section {
+    margin: 2.5rem 0 2rem 0;
+    background: #fff;
+    border-radius: 1.5rem;
+    box-shadow: 0 2px 16px #e0e0e0;
+    padding: 2rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.settings-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-bottom: 1.2rem;
+}
+
+.settings-header h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #6c63ff;
+}
+
+.settings-desc {
+    margin: 0;
+    color: #888;
+    font-size: 1rem;
+}
+
+.settings-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    justify-content: flex-start;
+}
+
+.settings-card {
+    background: #f5f6fa;
+    border-radius: 1.1rem;
+    box-shadow: 0 1px 8px #e0e0e0;
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    padding: 1.1rem 1.5rem;
+    min-width: 220px;
+    max-width: 340px;
+    flex: 1 1 220px;
+    transition: box-shadow 0.18s, transform 0.18s;
+    position: relative;
+}
+
+.settings-card:hover {
+    box-shadow: 0 4px 18px #bdbdbd;
+    transform: translateY(-2px) scale(1.03);
+    z-index: 2;
+}
+
+.settings-icon {
+    font-size: 2.1rem;
+    margin-right: 0.5rem;
+    color: #6c63ff;
+    flex-shrink: 0;
+}
+
+.settings-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    min-width: 0;
+}
+
+.settings-title {
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: #23263a;
+}
+
+.settings-category-desc {
+    font-size: 0.92rem;
+    color: #888;
+}
+
+@media (max-width: 1100px) {
+    .settings-section {
+        padding: 1.2rem 0.7rem;
+        border-radius: 1rem;
+    }
+
+    .settings-list {
+        gap: 0.7rem;
+    }
+
+    .settings-card {
+        padding: 0.7rem 1rem;
+        min-width: 0;
+        max-width: 100%;
+        border-radius: 0.8rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .settings-section {
+        padding: 0.7rem 0.2rem;
+        border-radius: 0.7rem;
+        margin: 1.2rem 0 1rem 0;
+    }
+
+    .settings-list {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .settings-card {
+        width: 100%;
+        max-width: 100%;
+        padding: 0.6rem 0.5rem;
+        font-size: 0.98rem;
+        border-radius: 0.6rem;
+    }
+}
+
+body.dark-mode .settings-section {
+    background: #23263a;
+    box-shadow: 0 2px 16px #10111a;
+}
+
+body.dark-mode .settings-header h3 {
+    color: #ffce00;
+}
+
+body.dark-mode .settings-card {
+    background: #181a20;
+    box-shadow: 0 1px 8px #10111a;
+}
+
+body.dark-mode .settings-title {
+    color: #ffce00;
+}
+
+body.dark-mode .settings-category-desc {
+    color: #bdbdbd;
+}
+
+body.dark-mode .settings-icon {
+    color: #ffce00;
 }

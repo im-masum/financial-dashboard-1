@@ -13,11 +13,11 @@
       <div class="logo">M</div>
       <nav>
         <ul>
-          <li class="active" aria-label="Home" data-tooltip="Home"><span
+          <li class="active" aria-label="Home" data-tooltip="Home" data-section="home"><span
               class="sidebar-active-bar"></span><span>🏠</span></li>
-          <li aria-label="Documents" data-tooltip="Documents"><span>📄</span></li>
-          <li aria-label="Analytics" data-tooltip="Analytics"><span>📊</span></li>
-          <li aria-label="Settings" data-tooltip="Settings"><span>⚙️</span></li>
+          <li aria-label="Documents" data-tooltip="Documents" data-section="documents"><span>📄</span></li>
+          <li aria-label="Analytics" data-tooltip="Analytics" data-section="analytics"><span>📊</span></li>
+          <li aria-label="Settings" data-tooltip="Settings" data-section="settings"><span>⚙️</span></li>
         </ul>
       </nav>
       <div class="sidebar-profile" aria-label="User Profile" tabindex="0">
@@ -32,7 +32,7 @@
       </div>
     </aside>
     <main class="main-content">
-      <header>
+      <header id="home">
         <div>
           <h2>Good Morning Abdul Munim</h2>
           <p>Your weekly Financial update</p>
@@ -115,6 +115,126 @@
           <canvas id="lineChart" style="display:none;"></canvas>
         </div>
       </section>
+      <!-- Documents Section -->
+      <section class="documents-section" id="documents">
+        <div class="documents-header">
+          <h3>Documents</h3>
+          <p class="documents-desc">Access and manage your important files. Download or view documents
+            instantly.</p>
+        </div>
+        <div class="documents-list">
+          <div class="document-card">
+            <span class="document-icon">📄</span>
+            <div class="document-info">
+              <div class="document-title">Financial Report Q1.pdf</div>
+              <div class="document-type">PDF</div>
+            </div>
+            <button class="document-action" aria-label="Download">⬇️</button>
+          </div>
+          <div class="document-card">
+            <span class="document-icon">📊</span>
+            <div class="document-info">
+              <div class="document-title">Annual Stats.xlsx</div>
+              <div class="document-type">Excel</div>
+            </div>
+            <button class="document-action" aria-label="Download">⬇️</button>
+          </div>
+          <div class="document-card">
+            <span class="document-icon">📝</span>
+            <div class="document-info">
+              <div class="document-title">Meeting Notes.docx</div>
+              <div class="document-type">Word</div>
+            </div>
+            <button class="document-action" aria-label="Download">⬇️</button>
+          </div>
+          <div class="document-card">
+            <span class="document-icon">📷</span>
+            <div class="document-info">
+              <div class="document-title">Receipt.jpg</div>
+              <div class="document-type">Image</div>
+            </div>
+            <button class="document-action" aria-label="View">👁️</button>
+          </div>
+        </div>
+      </section>
+      <!-- Analytics Section -->
+      <section class="analytics-section" id="analytics">
+        <div class="analytics-header">
+          <h3>Analytics</h3>
+          <p class="analytics-desc">Key metrics and trends for your financial overview.</p>
+        </div>
+        <div class="analytics-list">
+          <div class="analytics-card">
+            <span class="analytics-icon">💰</span>
+            <div class="analytics-info">
+              <div class="analytics-title">Total Revenue</div>
+              <div class="analytics-value">$120,000</div>
+              <div class="analytics-trend up">▲ 5.2%</div>
+            </div>
+          </div>
+          <div class="analytics-card">
+            <span class="analytics-icon">📈</span>
+            <div class="analytics-info">
+              <div class="analytics-title">Growth Rate</div>
+              <div class="analytics-value">12.4%</div>
+              <div class="analytics-trend up">▲ 1.8%</div>
+            </div>
+          </div>
+          <div class="analytics-card">
+            <span class="analytics-icon">🧾</span>
+            <div class="analytics-info">
+              <div class="analytics-title">Invoices Sent</div>
+              <div class="analytics-value">320</div>
+              <div class="analytics-trend down">▼ 0.7%</div>
+            </div>
+          </div>
+          <div class="analytics-card">
+            <span class="analytics-icon">👥</span>
+            <div class="analytics-info">
+              <div class="analytics-title">New Clients</div>
+              <div class="analytics-value">28</div>
+              <div class="analytics-trend up">▲ 3.1%</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Settings Section -->
+      <section class="settings-section" id="settings">
+        <div class="settings-header">
+          <h3>Settings</h3>
+          <p class="settings-desc">Manage your preferences and account settings below.</p>
+        </div>
+        <div class="settings-list">
+          <div class="settings-card">
+            <span class="settings-icon">👤</span>
+            <div class="settings-info">
+              <div class="settings-title">Profile</div>
+              <div class="settings-category-desc">Edit your personal information and avatar.</div>
+            </div>
+          </div>
+          <div class="settings-card">
+            <span class="settings-icon">🔒</span>
+            <div class="settings-info">
+              <div class="settings-title">Account</div>
+              <div class="settings-category-desc">Change your email, password, and account details.</div>
+            </div>
+          </div>
+          <div class="settings-card">
+            <span class="settings-icon">🔔</span>
+            <div class="settings-info">
+              <div class="settings-title">Notifications</div>
+              <div class="settings-category-desc">Manage notification preferences and alerts.</div>
+            </div>
+          </div>
+          <div class="settings-card">
+            <span class="settings-icon">🛡️</span>
+            <div class="settings-info">
+              <div class="settings-title">Security</div>
+              <div class="settings-category-desc">Update security settings and enable 2FA.</div>
+            </div>
+          </div>
+        </div>
+      </section>
       <section class="history">
         <div class="history-header">
           <h3>Transaction History</h3>
@@ -132,40 +252,39 @@
           </thead>
           <tbody>
             <tr>
-              <td data-label="User"><span class="avatar">👤</span></td>
-              <td data-label="Type"><span class="history-type loan">💳 Loan</span></td>
-              <td data-label="Time">12:42:00 PM</td>
-              <td data-label="Amount">$1200.00</td>
-              <td data-label="Status"><span class="history-status completed">Completed</span></td>
+              <td><span class="avatar">👤</span></td>
+              <td><span class="history-type loan">💳 Loan</span></td>
+              <td>12:42:00 PM</td>
+              <td>$1200.00</td>
+              <td><span class="history-status completed">Completed</span></td>
             </tr>
             <tr>
-              <td data-label="User"><span class="avatar">👤</span></td>
-              <td data-label="Type"><span class="history-type payment">💸 Payment</span></td>
-              <td data-label="Time">09:15:23 AM</td>
-              <td data-label="Amount">$500.00</td>
-              <td data-label="Status"><span class="history-status pending">Pending</span></td>
+              <td><span class="avatar">👤</span></td>
+              <td><span class="history-type payment">💸 Payment</span></td>
+              <td>09:15:23 AM</td>
+              <td>$500.00</td>
+              <td><span class="history-status pending">Pending</span></td>
             </tr>
             <tr>
-              <td data-label="User"><span class="avatar">👤</span></td>
-              <td data-label="Type"><span class="history-type refund">🔄 Refund</span></td>
-              <td data-label="Time">03:22:10 PM</td>
-              <td data-label="Amount">$200.00</td>
-              <td data-label="Status"><span class="history-status declined">Declined</span></td>
+              <td><span class="avatar">👤</span></td>
+              <td><span class="history-type refund">🔄 Refund</span></td>
+              <td>03:22:10 PM</td>
+              <td>$200.00</td>
+              <td><span class="history-status declined">Declined</span></td>
             </tr>
             <tr>
-              <td data-label="User"><span class="avatar">👤</span></td>
-              <td data-label="Type"><span class="history-type invoice">🧾 Invoice</span></td>
-              <td data-label="Time">11:05:45 AM</td>
-              <td data-label="Amount">$750.00</td>
-              <td data-label="Status"><span class="history-status completed">Completed</span></td>
+              <td><span class="avatar">👤</span></td>
+              <td><span class="history-type invoice">🧾 Invoice</span></td>
+              <td>11:05:45 AM</td>
+              <td>$750.00</td>
+              <td><span class="history-status completed">Completed</span></td>
             </tr>
           </tbody>
         </table>
       </section>
     </main>
   </div>
-  <div id="modal" class="modal">
-    <div class="modal-content">
+  <div id="modal" class="modal"> <div class="modal-content">
       <span class="close">&times;</span>
       <h3>History Details</h3>
       <div id="modal-body"></div>
