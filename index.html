@@ -3,79 +3,175 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Financial Dashboard</title>
   <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
 </head>
 
 <body>
-  <div class="container">
+  <div class="dashboard">
     <aside class="sidebar">
-      <div class="logo">A</div>
+      <div class="logo">M</div>
       <nav>
         <ul>
-          <li><i class="icon">🏠</i></li>
-          <li><i class="icon">📄</i></li>
-          <li><i class="icon">📊</i></li>
-          <li><i class="icon">⚙️</i></li>
+          <li class="active" aria-label="Home" data-tooltip="Home"><span
+              class="sidebar-active-bar"></span><span>🏠</span></li>
+          <li aria-label="Documents" data-tooltip="Documents"><span>📄</span></li>
+          <li aria-label="Analytics" data-tooltip="Analytics"><span>📊</span></li>
+          <li aria-label="Settings" data-tooltip="Settings"><span>⚙️</span></li>
         </ul>
       </nav>
+      <div class="sidebar-profile" aria-label="User Profile" tabindex="0">
+        <span class="sidebar-avatar">👤</span>
+        <span class="sidebar-username">Munim</span>
+        <span class="sidebar-settings-icon" aria-label="Open user menu">▼</span>
+        <ul class="sidebar-settings-menu" aria-label="User Settings" style="display: none;">
+          <li class="settings-option active" tabindex="0">Profile</li>
+          <li class="settings-option" tabindex="0">Settings</li>
+          <li class="settings-option" tabindex="0">Logout</li>
+        </ul>
+      </div>
     </aside>
-
-    <main class="dashboard">
-      <header class="dashboard-header">
+    <main class="main-content">
+      <header>
         <div>
-          <h2>Good Morning David</h2>
-          <p>Your weekly financial update</p>
+          <h2>Good Morning Abdul Munim</h2>
+          <p>Your weekly Financial update</p>
         </div>
         <div class="search-profile">
+          <button class="dark-mode-toggle" aria-label="Toggle dark mode">🌙</button>
           <input type="text" placeholder="Search here">
-          <img src="https://i.pravatar.cc/40" alt="Profile" class="profile">
+          <span class="notif">🔔</span>
+          <span class="avatar">👤</span>
         </div>
       </header>
-
-      <section class="cards-row">
-        <div class="card">Ready to Assign<br><span>200 - 42</span></div>
-        <div class="card">Pending Sign Offs<br><span>63 - 17</span></div>
-        <div class="card">Declined<br><span>5</span></div>
-        <div class="card">RFI<br><span>13 - 17</span></div>
-      </section>
-
-      <section class="invoices-section">
-        <div class="card large">
-          <div class="progress">
-            <span>45%</span>
+      <section class="bills">
+        <div class="card" tabindex="0">
+          <span class="bill-icon" aria-label="Ready to assign">📝</span>
+          <div class="bill-label">Ready to Assign</div>
+          <div class="bill-value">200 - 42</div>
+          <div class="bill-progress">
+            <div class="bill-progress-bar" style="width:70%"></div>
           </div>
-          <div class="amount">
-            <p>Amount Owed</p>
-            <h3>$933,879.45</h3>
-            <small>$126,783.89</small>
-          </div>
+          <div class="card-detail">More details about assigned bills...</div>
         </div>
-        <div class="card">Paid Invoices<br><span>$9,034.49</span></div>
-        <div class="card">Live Jobs Value<br><span>$23,7,8.32</span></div>
-        <div class="chart">
-          <div class="bar" style="height:40%"></div>
-          <div class="bar" style="height:60%"></div>
-          <div class="bar" style="height:75%"></div>
-          <div class="bar" style="height:90%"></div>
-          <div class="bar" style="height:65%"></div>
-          <div class="bar" style="height:55%"></div>
-          <div class="bar" style="height:60%"></div>
+        <div class="card" tabindex="0">
+          <span class="bill-icon" aria-label="Pending sign offs">⏳</span>
+          <div class="bill-label">Pending Sign Offs</div>
+          <div class="bill-value">63 - 17</div>
+          <div class="bill-progress">
+            <div class="bill-progress-bar" style="width:40%"></div>
+          </div>
+          <div class="card-detail">Sign offs awaiting approval.</div>
+        </div>
+        <div class="card" tabindex="0">
+          <span class="bill-icon" aria-label="Declined">❌</span>
+          <div class="bill-label">Declined</div>
+          <div class="bill-value">5</div>
+          <div class="bill-progress">
+            <div class="bill-progress-bar" style="width:15%"></div>
+          </div>
+          <div class="card-detail">Declined bills this week.</div>
+        </div>
+        <div class="card" tabindex="0">
+          <span class="bill-icon" aria-label="RFI">❓</span>
+          <div class="bill-label">RFI</div>
+          <div class="bill-value">13 - 17</div>
+          <div class="bill-progress">
+            <div class="bill-progress-bar" style="width:25%"></div>
+          </div>
+          <div class="card-detail">Requests for information.</div>
         </div>
       </section>
-
+      <section class="invoices">
+        <div class="card owed" tabindex="0">
+          <span class="invoice-icon" aria-label="Amount Owed">💸</span>
+          <div class="gauge" title="45% of invoices are owed">
+            <div class="gauge-fill"></div>
+            <div class="gauge-cover">45%</div>
+          </div>
+          <div class="invoice-label">Amount Owed</div>
+          <div class="invoice-value">$933,879.45</div>
+        </div>
+        <div class="card paid" tabindex="0">
+          <span class="invoice-icon" aria-label="Paid Invoices">✅</span>
+          <div class="invoice-label">Paid Invoices</div>
+          <div class="invoice-value">$9,034.49</div>
+          <div class="invoice-status paid">Paid</div>
+        </div>
+        <div class="card jobs" tabindex="0">
+          <span class="invoice-icon" aria-label="Live Jobs Value">📦</span>
+          <div class="invoice-label">Live Jobs Value</div>
+          <div class="invoice-value">$23,7,8.32</div>
+          <div class="invoice-status live">Live</div>
+        </div>
+        <div class="card chart" tabindex="0">
+          <span class="invoice-icon" aria-label="Invoices Chart">📊</span>
+          <div class="invoice-label">Invoices Chart</div>
+          <div class="chart-toggle-group">
+            <button class="chart-toggle-btn active" data-type="bar" aria-label="Bar Chart">Bar</button>
+            <button class="chart-toggle-btn" data-type="line" aria-label="Line Chart">Line</button>
+          </div>
+          <canvas id="barChart"></canvas>
+          <canvas id="lineChart" style="display:none;"></canvas>
+        </div>
+      </section>
       <section class="history">
-        <div class="card">
-          <p><strong>Loan</strong></p>
-          <p>12:42 PM</p>
-          <p>$1200.00</p>
-          <p>Completed</p>
+        <div class="history-header">
+          <h3>Transaction History</h3>
+          <input type="text" class="history-search" placeholder="Search history..." aria-label="Search history">
         </div>
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Type</th>
+              <th>Time</th>
+              <th>Amount</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="avatar">👤</span></td>
+              <td><span class="history-type loan">💳 Loan</span></td>
+              <td>12:42:00 PM</td>
+              <td>$1200.00</td>
+              <td><span class="history-status completed">Completed</span></td>
+            </tr>
+            <tr>
+              <td><span class="avatar">👤</span></td>
+              <td><span class="history-type payment">💸 Payment</span></td>
+              <td>09:15:23 AM</td>
+              <td>$500.00</td>
+              <td><span class="history-status pending">Pending</span></td>
+            </tr>
+            <tr>
+              <td><span class="avatar">👤</span></td>
+              <td><span class="history-type refund">🔄 Refund</span></td>
+              <td>03:22:10 PM</td>
+              <td>$200.00</td>
+              <td><span class="history-status declined">Declined</span></td>
+            </tr>
+            <tr>
+              <td><span class="avatar">👤</span></td>
+              <td><span class="history-type invoice">🧾 Invoice</span></td>
+              <td>11:05:45 AM</td>
+              <td>$750.00</td>
+              <td><span class="history-status completed">Completed</span></td>
+            </tr>
+          </tbody>
+        </table>
       </section>
     </main>
   </div>
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>History Details</h3>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 
 </html>
