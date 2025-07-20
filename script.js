@@ -616,6 +616,7 @@ function openSidebar() {
   sidebar.classList.add("open");
   sidebarOverlay.style.display = "block";
   hamburger.classList.add("active");
+  hamburger.setAttribute("aria-expanded", "true");
   body.classList.add("body-no-scroll");
   // Focus first nav item
   const firstNav = sidebar.querySelector("nav ul li");
@@ -628,6 +629,7 @@ function closeSidebar() {
   sidebar.classList.remove("open");
   sidebarOverlay.style.display = "none";
   hamburger.classList.remove("active");
+  hamburger.setAttribute("aria-expanded", "false");
   body.classList.remove("body-no-scroll");
   document.removeEventListener("keydown", trapSidebarFocus);
   document.removeEventListener("keydown", escSidebarClose);
