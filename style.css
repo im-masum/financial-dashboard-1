@@ -1752,47 +1752,91 @@ body.dark-mode .settings-icon {
     background: #333;
 }
 
-/* Footer styles */
-.footer {
-    width: 100%;
-    background: #f8f9fa;
-    color: #333;
-    padding: 16px 0;
-    text-align: center;
-    font-size: 1rem;
-    border-top: 1px solid #e0e0e0;
-    position: relative;
-    z-index: 10;
-}
-
+/* Improved Footer styles */
 .footer-content {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 16px;
+    gap: 32px;
     flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.footer-nav a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.footer-nav a:hover, .footer-nav a:focus {
+    background: #eaeaea;
+    color: #6c63ff;
+    outline: none;
+}
+
+.footer-social a {
+    font-size: 1.3rem;
+    color: #6c63ff;
+    background: #ecebff;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+}
+
+.footer-social a:hover, .footer-social a:focus {
+    background: #ffce00;
+    color: #222;
+    outline: none;
+}
+
+.footer-copy {
+    color: #888;
+    font-size: 0.98rem;
+    flex-direction: column;
+    gap: 4px;
 }
 
 .footer-link a {
     color: #6c63ff;
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.2s;
+    margin-left: 8px;
 }
 
-.footer-link a:hover {
+.footer-link a:hover, .footer-link a:focus {
     color: #ffce00;
+    outline: none;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
     .footer-content {
         flex-direction: column;
-        gap: 6px;
+        gap: 18px;
+        align-items: stretch;
     }
 
-    .footer {
-        font-size: 0.95rem;
-        padding: 12px 0;
+    .footer-section {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .footer-copy {
+        align-items: center;
+        text-align: center;
     }
 }
