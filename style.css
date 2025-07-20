@@ -434,6 +434,9 @@ header p {
 @media (max-width: 1100px) {
     .main-content {
         padding: 20px;
+        flex-direction: column;
+        display: flex;
+
     }
 
     .bills, .invoices {
@@ -450,7 +453,9 @@ header p {
 
 @media (max-width: 900px) {
     .main-content {
+        display: flex;
         padding: 10px;
+        flex-direction: column;
     }
 
     .bills, .invoices, .demo-chart-section {
@@ -471,6 +476,14 @@ header p {
 }
 
 @media (max-width: 700px) {
+    header{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+     }
+
     .dashboard {
         flex-direction: column;
     }
@@ -478,7 +491,6 @@ header p {
     .sidebar {
         width: 80%;
         min-width: 0;
-        left: -100px;
         border-radius: 0 0 30px 30px;
         padding: 0 10px;
         justify-content: space-between;
@@ -501,10 +513,9 @@ header p {
 
     .sidebar-profile {
         position: static;
-        flex-direction: row;
         gap: 6px;
         margin-right: 8px;
-        margin-bottom: 0;
+        margin-bottom: 20px;
         align-items: center;
     }
 
