@@ -1676,3 +1676,78 @@ body.dark-mode .settings-icon {
 #sidebar.open~#sidebar-overlay {
     display: block;
 }
+
+/* Hamburger animation */
+.hamburger {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1100;
+    position: relative;
+}
+
+.hamburger span {
+    display: block;
+    height: 4px;
+    width: 28px;
+    background: #333;
+    margin: 5px auto;
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Sidebar slide and overlay fade */
+@media (max-width: 768px) {
+    .sidebar {
+        left: -250px;
+        transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+    #sidebar-overlay {
+        display: block;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+    }
+
+    .sidebar.open~#sidebar-overlay {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+/* Prevent body scroll when sidebar is open */
+.body-no-scroll {
+    overflow: hidden !important;
+    height: 100vh;
+}
+
+/* Focus style for sidebar nav items */
+.sidebar nav ul li:focus {
+    outline: 2px solid #ffce00;
+    outline-offset: 2px;
+    background: #333;
+}

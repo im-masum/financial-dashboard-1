@@ -612,13 +612,55 @@ function isMobile() {
   return window.innerWidth <= 768;
 }
 
+function getSidebarFocusable() {
+  return sidebar.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])');
+}
+
 function openSidebar() {
   sidebar.classList.add("open");
   sidebarOverlay.style.display = "block";
+  hamburger.classList.add("active");
+  body.classList.add("body-no-scroll");
+  // Focus first nav item
+  const firstNav = sidebar.querySelector("nav ul li");
+  if (firstNav) firstNav.focus();
+  // Trap focus
+  document.addEventListener("keydown", trapSidebarFocus);
+  document.addEventListener("keydown", escSidebarClose);
 }
 function closeSidebar() {
   sidebar.classList.remove("open");
   sidebarOverlay.style.display = "none";
+  hamburger.classList.remove("active");
+  body.classList.remove("body-no-scroll");
+  document.removeEventListener("keydown", trapSidebarFocus);
+  document.removeEventListener("keydown", escSidebarClose);
+  hamburger.focus();
+}
+
+function trapSidebarFocus(e) {
+  if (!sidebar.classList.contains("open")) return;
+  if (e.key !== "Tab") return;
+  const focusable = sidebar.querySelectorAll(
+    "nav ul li, .sidebar-profile, .settings-option"
+  );
+  if (!focusable.length) return;
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (e.shiftKey) {
+    if (document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    }
+  } else {
+    if (document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+}
+function escSidebarClose(e) {
+  if (e.key === "Escape") closeSidebar();
 }
 
 if (hamburger && sidebar && sidebarOverlay) {
@@ -641,6 +683,8 @@ function updateHamburgerDisplay() {
     hamburger.style.display = "none";
     sidebar.classList.remove("open");
     sidebarOverlay.style.display = "none";
+    hamburger.classList.remove("active");
+    body.classList.remove("body-no-scroll");
   }
 }
 window.addEventListener("resize", updateHamburgerDisplay);
