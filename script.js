@@ -612,10 +612,6 @@ function isMobile() {
   return window.innerWidth <= 768;
 }
 
-function getSidebarFocusable() {
-  return sidebar.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])');
-}
-
 function openSidebar() {
   sidebar.classList.add("open");
   sidebarOverlay.style.display = "block";
