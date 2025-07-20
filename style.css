@@ -475,11 +475,9 @@ header p {
     }
 
     .sidebar {
-        flex-direction: row;
-        width: 100vw;
+        width: 80%;
         min-width: 0;
-        min-height: 0;
-        height: 60px;
+        left: -100px;
         border-radius: 0 0 30px 30px;
         padding: 0 10px;
         justify-content: space-between;
@@ -488,7 +486,6 @@ header p {
     }
 
     .sidebar nav ul {
-        flex-direction: row;
         gap: 10px;
         width: auto;
         margin: 0;
