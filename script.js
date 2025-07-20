@@ -603,6 +603,49 @@ function setupDemoChartDownloads() {
   }
 }
 
+// Responsive sidebar navigation for mobile
+const sidebar = document.getElementById("sidebar");
+const sidebarOverlay = document.getElementById("sidebar-overlay");
+const hamburger = document.querySelector(".hamburger");
+
+function isMobile() {
+  return window.innerWidth <= 768;
+}
+
+function openSidebar() {
+  sidebar.classList.add("open");
+  sidebarOverlay.style.display = "block";
+}
+function closeSidebar() {
+  sidebar.classList.remove("open");
+  sidebarOverlay.style.display = "none";
+}
+
+if (hamburger && sidebar && sidebarOverlay) {
+  hamburger.addEventListener("click", openSidebar);
+  sidebarOverlay.addEventListener("click", closeSidebar);
+  // Close sidebar when a nav item is clicked (on mobile)
+  sidebar.querySelectorAll("nav ul li").forEach((item) => {
+    item.addEventListener("click", () => {
+      if (isMobile()) closeSidebar();
+    });
+  });
+}
+
+// Show/hide hamburger based on screen size
+function updateHamburgerDisplay() {
+  if (isMobile()) {
+    hamburger.style.display = "inline-flex";
+    closeSidebar();
+  } else {
+    hamburger.style.display = "none";
+    sidebar.classList.remove("open");
+    sidebarOverlay.style.display = "none";
+  }
+}
+window.addEventListener("resize", updateHamburgerDisplay);
+window.addEventListener("DOMContentLoaded", updateHamburgerDisplay);
+
 // Render on load and on dark mode toggle
 window.addEventListener("DOMContentLoaded", () => {
   createDemoChart("doughnut");

@@ -9,7 +9,7 @@
 
 <body>
   <div class="dashboard">
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
       <div class="logo">M</div>
       <nav>
         <ul>
@@ -31,6 +31,7 @@
         </ul>
       </div>
     </aside>
+    <div id="sidebar-overlay"></div>
     <main class="main-content">
       <header id="home">
         <div>
@@ -38,6 +39,11 @@
           <p>Your weekly Financial update</p>
         </div>
         <div class="search-profile">
+          <button class="hamburger" aria-label="Open navigation" style="display:none;">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
           <button class="dark-mode-toggle" aria-label="Toggle dark mode">🌙</button>
           <input type="text" placeholder="Search here">
           <span class="notif">🔔</span>
@@ -284,7 +290,8 @@
       </section>
     </main>
   </div>
-  <div id="modal" class="modal"> <div class="modal-content">
+  <div id="modal" class="modal">
+    <div class="modal-content">
       <span class="close">&times;</span>
       <h3>History Details</h3>
       <div id="modal-body"></div>
