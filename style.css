@@ -1800,7 +1800,11 @@ body.dark-mode .hamburger-bars span {
 .footer-section {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 2rem;
+    padding: min(1rem, 8%) 2rem;
+
+
 }
 
 .footer-nav a {
