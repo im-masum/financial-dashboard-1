@@ -1796,8 +1796,9 @@ body.dark-mode .hamburger-bars span {
     max-width: 100%;
     width: 100%;
     margin: .5rem auto;
-    background:#191d28;
     border-radius: 20px;
+    box-shadow: 0 2px 8px #1f1d1d;
+
 
 
 }
