@@ -476,13 +476,13 @@ header p {
 }
 
 @media (max-width: 700px) {
-    header{
+    header {
         display: flex;
         flex-direction: column;
         gap: 20px;
         align-items: center;
         justify-content: center;
-     }
+    }
 
     .dashboard {
         flex-direction: column;
@@ -1789,13 +1789,17 @@ body.dark-mode .hamburger-bars span {
 /* Improved Footer styles */
 .footer-content {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     flex-wrap: wrap;
-    max-width: 1200px;
+    max-width: 100%;
     width: 100%;
     margin: 0 auto;
-    flex-direction: column;
+    background-color: #23263a;
+    border-radius: 20px;
+
+
 }
 
 .footer-section {
@@ -1804,7 +1808,6 @@ body.dark-mode .hamburger-bars span {
     justify-content: center;
     gap: 2rem;
     padding: min(1rem, 8%) 2rem;
-
 
 }
 
