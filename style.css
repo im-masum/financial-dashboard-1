@@ -1789,10 +1789,9 @@ body.dark-mode .hamburger-bars span {
 /* Improved Footer styles */
 .footer-content {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 32px;
+    gap: 2rem;
     flex-wrap: wrap;
     max-width: 1100px;
     margin: 0 auto;
