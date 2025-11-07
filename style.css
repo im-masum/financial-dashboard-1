@@ -124,6 +124,96 @@ body {
     margin-top: 2px;
 }
 
+/* Sidebar user settings dropdown */
+.sidebar-settings-icon {
+    font-size: 1.1rem;
+    margin-top: 2px;
+    color: #6c63ff;
+    transition: transform 0.2s;
+}
+
+.sidebar-profile.open .sidebar-settings-icon {
+    transform: rotate(180deg);
+}
+
+.sidebar-settings-menu {
+    position: absolute;
+    left: 50%;
+    bottom: 60px;
+    transform: translateX(-50%);
+    background: #fff;
+    box-shadow: 0 4px 16px #e0e0e0;
+    border-radius: 12px;
+    min-width: 120px;
+    padding: 8px 0;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    animation: fadeIn 0.2s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px) translateX(-50%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) translateX(-50%);
+    }
+}
+
+.settings-option {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #6c63ff;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    outline: none;
+}
+
+.settings-option:hover, .settings-option:focus {
+    background: #f5f6fa;
+    color: #23263a;
+}
+
+.settings-option.active {
+    background: #6c63ff;
+    color: #fff;
+}
+
+body.dark-mode .sidebar-settings-icon {
+    color: #ffce00;
+}
+
+body.dark-mode .sidebar-settings-menu {
+    background: #23263a;
+    box-shadow: 0 4px 16px #10111a;
+}
+
+body.dark-mode .settings-option {
+    color: #ffce00;
+}
+
+body.dark-mode .settings-option:hover, body.dark-mode .settings-option:focus {
+    background: #181a20;
+    color: #ffce00;
+}
+
+body.dark-mode .settings-option.active {
+    background: #ffce00;
+    color: #23263a;
+}
+
+
+
+
+
 .main-content {
     flex: 1;
     padding: 40px;
@@ -1029,91 +1119,6 @@ body.dark-mode .chart-toggle-btn:hover {
     background: transparent;
 }
 
-/* Sidebar user settings dropdown */
-.sidebar-settings-icon {
-    font-size: 1.1rem;
-    margin-top: 2px;
-    color: #6c63ff;
-    transition: transform 0.2s;
-}
-
-.sidebar-profile.open .sidebar-settings-icon {
-    transform: rotate(180deg);
-}
-
-.sidebar-settings-menu {
-    position: absolute;
-    left: 50%;
-    bottom: 60px;
-    transform: translateX(-50%);
-    background: #fff;
-    box-shadow: 0 4px 16px #e0e0e0;
-    border-radius: 12px;
-    min-width: 120px;
-    padding: 8px 0;
-    z-index: 20;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    animation: fadeIn 0.2s;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px) translateX(-50%);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) translateX(-50%);
-    }
-}
-
-.settings-option {
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: #6c63ff;
-    background: none;
-    border: none;
-    text-align: left;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-    outline: none;
-}
-
-.settings-option:hover, .settings-option:focus {
-    background: #f5f6fa;
-    color: #23263a;
-}
-
-.settings-option.active {
-    background: #6c63ff;
-    color: #fff;
-}
-
-body.dark-mode .sidebar-settings-icon {
-    color: #ffce00;
-}
-
-body.dark-mode .sidebar-settings-menu {
-    background: #23263a;
-    box-shadow: 0 4px 16px #10111a;
-}
-
-body.dark-mode .settings-option {
-    color: #ffce00;
-}
-
-body.dark-mode .settings-option:hover, body.dark-mode .settings-option:focus {
-    background: #181a20;
-    color: #ffce00;
-}
-
-body.dark-mode .settings-option.active {
-    background: #ffce00;
-    color: #23263a;
-}
 
 /* Documents section styles */
 .documents-section {
@@ -1830,7 +1835,7 @@ body.dark-mode .hamburger-bars span {
 }
 
 .footer-social a {
-    
+
     font-size: 1.3rem;
     color: #6c63ff;
     background: #ecebff;
